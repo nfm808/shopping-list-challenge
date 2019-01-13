@@ -3,8 +3,20 @@
 // to in the shopping list 
 const shoppingList = []
 
+// toggle the class on the shopping list items
+ function toggle() {
+     $(function() {
+    $('.shopping-item-toggle').on('click', function (e) {
+        // store the 'span .shopping-item'
+        let uncle = $(e.target).closest('button').parent('div').prev();
+        console.log(uncle);
+        $(uncle).toggleClass('shopping-item__checked');
+    });
+ })};
+
 // add shopping entry items to list
 $(function(){
+
     // activated upon submit by the form
     $('#js-shopping-list-form').submit(event => {
 
@@ -13,7 +25,6 @@ $(function(){
 
         // store the user entry string
         const item = $(this).find('#shopping-list-entry').val();
-        console.log(item);
 
         // push the html elements to the shoppingList
         // in order to create the new html for the 
@@ -26,7 +37,8 @@ $(function(){
 
         // reset the form to default
         $('#js-shopping-list-form')[0].reset()
+
     }); 
 })
 
-
+toggle();
