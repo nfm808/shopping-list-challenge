@@ -54,28 +54,36 @@ function shopping() {
             // store the user entry string
             const item = $(this).find('#shopping-list-entry').val();
             
-            // push the html elements to the shoppingList
-            // in order to create the new html for the 
-            // added item
-            shoppingList.push($(
-                `<li>
-                    <span class='shopping-item'>${item}</span>
-                    <div class='shopping-item-controls'>
-                        <button class='shopping-item-toggle'>
-                            <span class='button-label'>check</span>
-                        </button>
-                        <button class='shopping-item-delete'>
-                            <span class='button-label'>delete</span>
-                        </button>
-                    </div>
-                </li>`
-            ));
-            // append the HTML elements to the DOM
-            $('.shopping-list').append(shoppingList);
+            // filter out empty fields
+            if (item.length > 0) {
 
-            // reset the form to default
-            $('#js-shopping-list-form')[0].reset()
+                // push the html elements to the shoppingList
+                // in order to create the new html for the 
+                // added item
+                shoppingList.push($(
+                    `<li>
+                        <span class='shopping-item'>${item}</span>
+                        <div class='shopping-item-controls'>
+                            <button class='shopping-item-toggle'>
+                                <span class='button-label'>check</span>
+                            </button>
+                            <button class='shopping-item-delete'>
+                                <span class='button-label'>delete</span>
+                            </button>
+                        </div>
+                    </li>`
+                ));
 
+                // append the HTML elements to the DOM
+                $('.shopping-list').append(shoppingList);
+
+                // reset the form to default
+                $('#js-shopping-list-form')[0].reset()
+
+            // alert the user to enter an item
+             } else {
+                 alert('Please enter in your item.')
+             };
         }); 
     });
 
